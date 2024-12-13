@@ -18,6 +18,7 @@ bool effect_runner_reactive_splash(uint8_t start, effect_params_t* params, react
             uint16_t tick = scale16by8(g_last_hit_tracker.tick[j], led_matrix_eeconfig.speed);
             val           = effect_func(val, dx, dy, dist, tick);
         }
+        val = ((val / 3) * 2) + 85;
         led_matrix_set_value(i, scale8(val, led_matrix_eeconfig.val));
     }
     return led_matrix_check_finished_leds(led_max);

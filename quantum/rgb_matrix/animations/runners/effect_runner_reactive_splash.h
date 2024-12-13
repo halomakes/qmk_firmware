@@ -19,6 +19,7 @@ bool effect_runner_reactive_splash(uint8_t start, effect_params_t* params, react
             uint16_t tick = scale16by8(g_last_hit_tracker.tick[j], qadd8(rgb_matrix_config.speed, 1));
             hsv           = effect_func(hsv, dx, dy, dist, tick);
         }
+        hsv.v = ((hsv.v / 3) * 2) + 85;
         hsv.v   = scale8(hsv.v, rgb_matrix_config.hsv.v);
         RGB rgb = rgb_matrix_hsv_to_rgb(hsv);
         rgb_matrix_set_color(i, rgb.r, rgb.g, rgb.b);
