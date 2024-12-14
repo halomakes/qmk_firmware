@@ -24,6 +24,15 @@ bool effect_runner_reactive_splash(uint8_t start, effect_params_t* params, react
         RGB rgb = rgb_matrix_hsv_to_rgb(hsv);
         rgb_matrix_set_color(i, rgb.r, rgb.g, rgb.b);
     }
+
+    if (host_keyboard_led_state().caps_lock) {
+        rgb_matrix_set_color(50, RGB_WHITE);
+    }
+
+    if (keymap_config.no_gui) {
+        rgb_matrix_set_color(77, RGB_WHITE);
+    }
+
     return rgb_matrix_check_finished_leds(led_max);
 }
 
